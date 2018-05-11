@@ -1,0 +1,12 @@
+!!! 5
+html(lang='en')
+	head
+		title Awesome website
+	body
+		h1 Express authentication
+		p Navigate to
+			ul
+				li: a(href="/secure") Secure content
+				li: a(href="/welcome") Welcome page
+				if isAuthenticated
+					a(href="/logout") Logout
