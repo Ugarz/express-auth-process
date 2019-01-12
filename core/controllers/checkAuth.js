@@ -11,15 +11,14 @@ const checkAuth  = (req, res, next)  => {
 	const locals = req.app.locals;
 
 	if(!locals.authenticated){
-		res.redirect(401, 'unauthorised');
 		console.log('check the locals', locals)
-		return;
+		return res.redirect(401, 'unauthorised');
 	}
 	
 	// don't serve /secure to those not logged in
 	// you should add to this list, for each and every secure url
 	const options = {
-		user : req.body.username,
+		user : locals.username,
 		isAuthenticated: locals.authenticated,
 		status: 200
 	}

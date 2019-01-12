@@ -33,7 +33,7 @@ module.exports = function (app, multer) {
 	
 
 	app.post('/signin', function (req, res, next) {
-		const credentialsAreOkay = req.body.username === 'tony' && req.body.password === 'stark';
+		const credentialsAreOkay = req.body.username === 'aze' && req.body.password === 'aze';
 		
 		// you might like to do a database look-up or something more scalable here
 		if (credentialsAreOkay) {
@@ -49,8 +49,9 @@ module.exports = function (app, multer) {
 			}
 			
 			res.render('welcome', options);
-			res.redirect(301, '/secure');
+			// res.redirect(301, '/secure');
 		} else {
+			console.log('Credentials not matching')
 			res.redirect('/login');
 		}
 
@@ -62,7 +63,7 @@ module.exports = function (app, multer) {
 	});
 
 	app.post('/login', function (req, res, next) {
-		const credentialsAreOkay = req.body.username === 'ugo' && req.body.password === 'aze';
+		const credentialsAreOkay = req.body.username === 'aze' && req.body.password === 'aze';
 		
 		// you might like to do a database look-up or something more scalable here
 		if (credentialsAreOkay) {
@@ -77,8 +78,8 @@ module.exports = function (app, multer) {
 				user : req.app.locals.username
 			}
 			
-			// res.render('welcome', options);
-			res.redirect('/secure');
+			res.render('welcome', options);
+			// res.redirect('/secure');
 		} else {
 			console.log('nope, credentials are not okay')
 			res.redirect('/login');
@@ -86,7 +87,7 @@ module.exports = function (app, multer) {
 
 	});
 
-	app.post('/profile', multer.array(), function (req, res, next) {
+	app.post('/avatar', multer.array(), function (req, res, next) {
 		console.log('Multer body', req.body);
 		res.json(req.body);
 	});
@@ -109,7 +110,7 @@ module.exports = function (app, multer) {
 			}
 		};
 		
-		res.sendFile(`${fileName}.txt`, options, function (err) {
+		return res.sendFile(`${fileName}.txt`, options, function (err) {
 			if (err) next(err);
 			console.log('Sent:', fileName);
 		});
