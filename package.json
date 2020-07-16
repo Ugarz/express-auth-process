@@ -18,7 +18,7 @@
     "multer": "^1.4.1"
   },
   "devDependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "nodemon": "^1.18.9"
   },
   "keywords": [],
